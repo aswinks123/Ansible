@@ -1,0 +1,20 @@
+--
+- hosts: all
+  become: true
+  tasks:
+   - name: Install nginx in a remote server
+     apt:
+      name:
+       - nginx
+      state: present
+
+  tasks:
+   - name: Delete the default index page
+     ansible.builtin.file:
+      path: /var/www/html/index.html
+      state: absent
+  task:
+    - name: Copy our custom index file
+      ansible.builtin.copy:
+        src: ./index.html
+        dest: /var/www/html/

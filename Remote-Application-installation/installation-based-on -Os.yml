@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+   - name: install system updates for ubuntu systems
+     yum: 
+      name:
+       - vim
+       - wget
+      state: present
+     when: ansible_distribution == "CentOS"
+
+
+   - name: install system updates for ubuntu systems
+     apt: 
+      name:
+       - vim
+       - wget
+      state: present
+     when: ansible_distribution == "Ubuntu"

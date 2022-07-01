@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: Install vim in a remote server
+     apt:
+      name:
+       - vim
+       - wget
+      state: present

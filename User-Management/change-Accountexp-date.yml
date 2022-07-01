@@ -1,0 +1,25 @@
+To set Account exp date
+
+---
+- hosts: all
+  become: yes
+  vars:
+    users:
+     - username: "a"
+     - username: "b"
+     - username: "c"
+  tasks:
+    - name : Creating users expiration date
+      user:
+        name: "{{item.username }}"
+        expires: 1633842695
+      with_items: "{{users}}"
+
+
+      
+      
+      
+      Note:
+
+      1633842695   : this is epoc Value
+    

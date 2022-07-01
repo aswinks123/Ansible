@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: Copy a file to remote server
+     copy:
+      src: /tmp/this-file-is-created-in-main-server
+      dest: /tmp/
+      backup: yes     // to take a backup of the file

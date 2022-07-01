@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  
+  tasks:
+   - name: Chnage file permission
+     file:
+      path: /opt/testfile.py
+      owner: aswin
+      group: aswin
+      mode: '0664'

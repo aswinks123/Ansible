@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+   - name: Find files older than 2 days
+     find:
+      path: /var/log
+      age: 5d
+      recurse: no
+     register: output
+   - debug: var=item.path
+     with_items: "{{ output.files }}"

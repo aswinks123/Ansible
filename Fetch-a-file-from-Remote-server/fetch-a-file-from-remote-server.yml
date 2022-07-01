@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: Fetch a file from remote
+     fetch:
+      src: /tmp/this-file-is-from-remote-server
+      dest: /tmp/fetched
+
+
+

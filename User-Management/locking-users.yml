@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    users:
+     - username: "a"
+     - username: "b"
+     
+  tasks:
+    - name : Locking user accounts
+      shell:
+        passwd -l "{{ item.username }}"
+      with_items: "{{users}}"
