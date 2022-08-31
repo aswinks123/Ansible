@@ -1,9 +1,11 @@
+#Created by Aswin KS
+#install application based on OS distribution
 ---
 - hosts: all
   become: true
   tasks:
 
-   - name: install system updates for ubuntu systems
+   - name: installing software for Cent OS
      yum: 
       name:
        - vim
@@ -12,7 +14,7 @@
      when: ansible_distribution == "CentOS"
 
 
-   - name: install system updates for ubuntu systems
+   - name: installing software  for ubuntu systems
      apt: 
       name:
        - vim
