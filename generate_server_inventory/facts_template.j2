@@ -1,0 +1,4 @@
+"Hostname","User-home","IP Address","Processor Cores","Total Memory (MB)"
+{% for host in ansible_play_hosts %}
+"{{ hostvars[host].ansible_hostname }}", "{{ hostvars[host].ansible_user_dir }}","{{ hostvars[host].ansible_default_ipv4.address }}","{{ hostvars[host].ansible_processor_cores }}","{{ hostvars[host].ansible_memtotal_mb }}"
+{% endfor %}
