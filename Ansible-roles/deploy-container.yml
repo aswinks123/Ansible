@@ -1,0 +1,24 @@
+#main yml file that calls the roles
+#Created by : Aswin KS
+
+---
+- name: Deploy Docker containers   #name of play
+  hosts: all
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  roles:  #Roles
+    - role: nginx-role  #Referencing the first role located at roles/nginx-role/tasks
+      vars: #These variables will be used by out role file 
+        container_name: Nginx-role-container
+        image_name: nginx
+        container_port: 80
+        host_port: 8080
+
+    - role: python-role #Referencing the second role located at roles/python-role/tasks
+      vars:
+        container_name: Python-role-container
+        image_name: 1365890/devops_project
+        container_port: 8083
+        host_port: 8083

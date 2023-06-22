@@ -1,0 +1,15 @@
+#Nginx role file
+
+---
+- name: Create and start python container
+  docker_container:
+    name: "{{ container_name }}" #Data is coming from the var section of our main yml file(deploy-container.yml)
+    image: "{{ image_name }}"
+    ports:
+      - "{{ host_port }}:{{ container_port }}"
+    state: started
+  register: docker_result
+
+- name: Output Python container information
+  debug:
+    var: docker_result

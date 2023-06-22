@@ -1,0 +1,14 @@
+#Nginx role file
+---
+- name: Create and start Nginx Docker container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}"
+    ports:
+      - "{{ host_port }}:{{ container_port }}"
+    state: started
+  register: docker_result
+
+- name: Output Nginx container information
+  debug:
+    var: docker_result
